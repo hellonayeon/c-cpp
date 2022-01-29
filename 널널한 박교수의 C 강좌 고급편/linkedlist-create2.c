@@ -11,22 +11,21 @@ void insert_node(ListNode **phead, ListNode *new_node);
 
 int main() {
     ListNode *head = NULL;
-    ListNode *node;
+    ListNode *node, *current_node;
 
-    node = (ListNode *)malloc(sizeof(ListNode));
-    node->data = 100;
+    for(int i=1; i<=5; i++) {
+        node = (ListNode *)malloc(sizeof(ListNode));
+        node->data = i;
+        insert_node(&head, node);
+    }
 
-    insert_node(&head, node);
-    printf("node->data = %d \n", node->data);
-    printf("head->data = %d \n", head->data);
+    current_node = head;
+    while(current_node != NULL) {
+        printf("current_node->data = %d \n", current_node->data);
+        current_node = current_node -> link;
+    }
 
-    node = (ListNode *)malloc(sizeof(ListNode));
-    node->data = 200;
-    insert_node(&head, node);
-    printf("node->data = %d \n", node->data);
-    printf("head->data = %d \n", head->data);
-    printf("head->link->data = %d \n", head->link->data);
-    printf("head->link->link = %p \n", head->link->link);
+    return 0;
 }
 
 void insert_node(ListNode **phead, ListNode *new_node) {
