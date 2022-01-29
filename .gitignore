@@ -1,2 +1,6 @@
+# C execution files
+*/*
+!*/*.*
+
 # VS Code
 **/.vscode
