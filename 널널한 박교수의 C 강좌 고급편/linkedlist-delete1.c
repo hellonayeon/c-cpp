@@ -8,8 +8,8 @@ typedef struct ListNode {
     struct ListNode *link;
 } ListNode;
 
-void remove_head(ListNode **phead);
-void insert_node(ListNode **phead, ListNode *prev_node, ListNode *new_node);
+void insert_node(ListNode **phead, ListNode *prev, ListNode *new);
+void remove_node(ListNode **phead, ListNode *prev, ListNode *remove);
 void display_list(ListNode *head);
 
 int main() {
@@ -28,35 +28,37 @@ int main() {
     printf("node1, node2 삽입 후 결과 \n");
     display_list(head);
 
-    // 헤드노드 삭제
-    remove_head(&head);
-    printf("헤드노드 삭제 후 \n");
+    remove_node(&head, node2, node1);
+    printf("node1 삭제 후 \n");
     display_list(head);
 
-    // 헤드노드 삭제
-    remove_head(&head);
-    printf("헤드노드 삭제 후 \n");
+    remove_node(&head, NULL, node2);
+    printf("node2 삭제 후 \n");
     display_list(head);
+
+    return 0;
 }
 
-void insert_node(ListNode **phead, ListNode *prev_node, ListNode *new_node) {
-    if(prev_node == NULL) {
-        new_node->link = *phead;
-        *phead = new_node;
+void insert_node(ListNode **phead, ListNode *prev, ListNode *new) {
+    if(prev == NULL) {
+        new->link = *phead;
+        *phead = new;
     }
     else {
-        new_node->link = prev_node;
-        prev_node->link = new_node;
+        new->link = prev;
+        prev->link = new;
     }
 }
 
-void remove_head(ListNode **phead) {
-    if (*phead != NULL) {
-        ListNode *tmp_node;
-        tmp_node = *phead;
+void remove_node(ListNode **phead, ListNode *prev, ListNode *remove) {
+    if (prev == NULL) { // 헤드노드를 삭제하는 경우
         *phead = (*phead)->link;
-        free(tmp_node);
     }
+    else {
+        prev->link = remove->link;
+    }
+
+    free(remove);
 }
 
 void display_list(ListNode *head) {
