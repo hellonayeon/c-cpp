@@ -2,6 +2,9 @@
 */*
 !*/*.*
 
+# Debug files
+**/*.dSYM
+
 # VS Code
 **/.vscode
 
