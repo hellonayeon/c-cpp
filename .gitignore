@@ -2,6 +2,11 @@
 */*
 !*/*.*
 
+# C++ execution files
+!*/*장
+*/*장/*/*
+!*/*장/*/*.*
+
 # Debug files
 **/*.dSYM
 
