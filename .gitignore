@@ -1,11 +1,10 @@
-# C execution files
+# C/C++ execution files
 */*
 !*/*.*
 
-# C++ execution files
-!*/*장
-*/*장/*/*
-!*/*장/*/*.*
+!*/*장*
+*/*장*/*/*
+!*/*장*/*/*.*
 
 # Debug files
 **/*.dSYM
